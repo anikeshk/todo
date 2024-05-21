@@ -25,8 +25,11 @@ If you have questions about this project, contact Anikesh G Kamath (email: kamat
 
 **Technical Debt**
 
-1. Logging system using winston or similar library
-2. Guarded routes
+1. Handling database errors
+2. Custom Express.Request interface to handle auth more cleanly
+3. Logging system using winston or similar library
+4. User auth sessions using JWT
+5. Guarded routes
 
 **Limiting Design Choices**
 
