@@ -1,10 +1,21 @@
-import Tasks from '../components/Tasks';
+import TasksPage from './TasksPage';
+import Default from '../components/Default';
+
+import { useAuth } from '../context/AuthProvider';
 
 const HomePage = () => {
+  const { isAuthenticated } = useAuth();
+
   return (
-    <>
-      <Tasks />
-    </>
+    <section>
+      {isAuthenticated ? (
+        <>
+          <TasksPage />
+        </>
+      ) : (
+        <Default />
+      )}
+    </section>
   );
 };
 

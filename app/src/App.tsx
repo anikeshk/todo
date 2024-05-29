@@ -5,7 +5,7 @@ import {
   RouterProvider,
 } from 'react-router-dom';
 
-import { AuthenticationProvider } from './context/AuthenticationProvider.tsx';
+import { AuthenticationProvider } from './context/AuthProvider.tsx';
 
 import MainLayout from './layouts/MainLayout';
 import HomePage from './pages/HomePage';
