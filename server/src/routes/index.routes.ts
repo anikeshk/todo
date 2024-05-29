@@ -6,8 +6,8 @@ import { TaskRouter } from './tasks.routes';
 
 const router: Router = Router();
 
-router.use('/api/health', HealthRouter);
-router.use('/api/users', UserRouter);
-router.use('/api/tasks', TaskRouter);
+router.use('/health', HealthRouter);
+router.use('/users', UserRouter);
+router.use('/tasks', TaskRouter);
 
 export { router };

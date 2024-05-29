@@ -29,7 +29,7 @@ export const UserController = {
       await user.save();
       res.status(200).json({ status: 'success' });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   },
   loginUser: async (req: Request, res: Response) => {
@@ -42,7 +42,7 @@ export const UserController = {
         updatedAt: usermeta.updatedAt,
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   },
 };

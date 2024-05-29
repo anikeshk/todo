@@ -2,9 +2,8 @@ import { Schema, model } from 'mongoose';
 
 const TaskSchema = new Schema(
   {
-    name: { type: String, required: true },
-    description: { type: String, required: true },
-    status: { type: String, required: true },
+    content: { type: String, required: true },
+    completed: { type: Boolean, default: false },
     assignee: { type: Schema.Types.ObjectId, ref: 'User', required: true },
   },
   { timestamps: true }
