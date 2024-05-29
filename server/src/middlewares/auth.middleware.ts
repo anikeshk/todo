@@ -3,7 +3,7 @@ import { Error } from 'mongoose';
 
 import { User } from '../models/users.models';
 
-import { ErrorCodes } from '../constants/constants';
+import { PublicPaths, ValidPaths } from '../constants/constants';
 
 export const authMiddleware = async (
   req: Request,
@@ -11,11 +11,17 @@ export const authMiddleware = async (
   next: NextFunction
 ): Promise<void> => {
   try {
-    if (req.path === '/health' || req.path === '/users/register') return next();
-
+    if (PublicPaths.includes(req.path)) {
+      return next();
+    }
+    if (!ValidPaths.includes(req.path)) {
+      return next();
+    }
     const authorization = req.headers.authorization;
     if (!authorization) {
-      res.status(401).json({ message: 'Unauthorized 1', status: 401 });
+      res
+        .status(401)
+        .json({ message: 'Unauthorized: Authorization header is required', status: 401 });
       return next();
     } else {
       const [type, credentials] = authorization.split(' ');
@@ -24,11 +30,11 @@ export const authMiddleware = async (
       const [username, password] = decodedCredentials.split(':');
       const user = await User.findOne({ username });
       if (!user) {
-        res.status(401).json({ message: 'Unauthorized 2', status: 401 });
+        res.status(401).json({ message: 'Unauthorized: Invalid user', status: 401 });
         return next();
       } else {
         if (user.password !== password) {
-          res.status(401).json({ message: 'Unauthorized 3', status: 401 });
+          res.status(401).json({ message: 'Unauthorized: Invalid password', status: 401 });
           return next();
         } else {
           // a better way of doing is creating a new definition for Request

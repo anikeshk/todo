@@ -2,22 +2,19 @@ import { Request, Response } from 'express';
 
 import { Task } from '../models/tasks.models';
 
-import { TaskStatus, ErrorCodes } from '../constants/constants';
+import { ErrorCodes } from '../constants/constants';
 
 export const TaskController = {
   createTask: async (req: Request, res: Response) => {
+    const { content, usermeta } = req.body;
+    if (!content) {
+      return res
+        .status(400)
+        .json({ status: 'error', message: 'Invalid input', code: ErrorCodes.INVALID_INPUT });
+    }
     try {
-      const { content, usermeta } = req.body;
-
-      if (!content) {
-        return res
-          .status(400)
-          .json({ status: 'error', message: 'Invalid input', code: ErrorCodes.INVALID_INPUT });
-      }
-
       const task = new Task({
         content,
-        status: TaskStatus.OPEN,
         assignee: usermeta._id,
       });
       const newTask = await task.save();
@@ -28,9 +25,9 @@ export const TaskController = {
         assignee: newTask.assignee,
         createdAt: newTask.createdAt,
       };
-      res.status(200).json({ data, status: 'success' });
+      return res.status(200).json({ data, status: 'success' });
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
     }
   },
   getTasks: async (req: Request, res: Response) => {
@@ -51,7 +48,7 @@ export const TaskController = {
       });
       res.status(200).json({ data, total, status: 'success' });
     } catch (error) {
-      console.error(error);
+      res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
     }
   },
   updateTask: async (req: Request, res: Response) => {
@@ -81,7 +78,7 @@ export const TaskController = {
         res.status(200).json({ data, status: 'success' });
       }
     } catch (error) {
-      console.error(error);
+      res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
     }
   },
   deleteTask: async (req: Request, res: Response) => {
@@ -90,7 +87,7 @@ export const TaskController = {
       await Task.deleteOne({ _id: id });
       res.status(200).json({ status: 'success' });
     } catch (error) {
-      console.error(error);
+      res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
     }
   },
 };
