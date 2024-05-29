@@ -27,22 +27,22 @@ export const UserController = {
 
       const user = new User({ name, username, password, email });
       await user.save();
-      res.status(200).json({ status: 'success' });
+      return res.status(200).json({ status: 'success' });
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
     }
   },
   loginUser: async (req: Request, res: Response) => {
     try {
       let { usermeta } = req.body;
-      res.status(200).json({
+      return res.status(200).json({
         status: 'success',
         name: usermeta.name,
         email: usermeta.email,
         updatedAt: usermeta.updatedAt,
       });
     } catch (error) {
-      console.error(error);
+      return res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
     }
   },
 };

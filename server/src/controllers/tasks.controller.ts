@@ -46,9 +46,9 @@ export const TaskController = {
           createdAt: task.createdAt,
         };
       });
-      res.status(200).json({ data, total, status: 'success' });
+      return res.status(200).json({ data, total, status: 'success' });
     } catch (error) {
-      res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
+      return res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
     }
   },
   updateTask: async (req: Request, res: Response) => {
@@ -75,19 +75,19 @@ export const TaskController = {
           assignee: newTask.assignee,
           createdAt: newTask.createdAt,
         };
-        res.status(200).json({ data, status: 'success' });
+        return res.status(200).json({ data, status: 'success' });
       }
     } catch (error) {
-      res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
+      return res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
     }
   },
   deleteTask: async (req: Request, res: Response) => {
     try {
       const { id } = req.params;
       await Task.deleteOne({ _id: id });
-      res.status(200).json({ status: 'success' });
+      return res.status(200).json({ status: 'success' });
     } catch (error) {
-      res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
+      return res.status(500).json({ status: 'error', code: 500, message: 'Internal Sever Error' });
     }
   },
 };
