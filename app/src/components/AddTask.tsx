@@ -14,8 +14,12 @@ const AddTask = ({ addTaskAction }: { addTaskAction: Function }) => {
         />
         <button
           onClick={() => {
-            addTaskAction(content);
-            setContent('');
+            if (content.trim() !== '') {
+              addTaskAction(content);
+              setContent('');
+            } else {
+              alert('Task content cannot be empty!');
+            }
           }}
           className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-r-lg focus:outline-none focus:shadow-outline"
         >

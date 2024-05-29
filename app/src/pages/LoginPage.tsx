@@ -19,6 +19,8 @@ const LoginPage = () => {
       const data = await response.json();
       if (data.status === 'success') {
         login(username, password);
+      } else {
+        alert('Invalid username or password');
       }
     } catch (error) {
       console.error(error);

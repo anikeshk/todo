@@ -51,7 +51,7 @@ const TaskItem = ({
           type="checkbox"
           checked={task.completed}
           onChange={() => onToggle(task)}
-          className="mr-2 cursor-pointer"
+          className="mr-2 cursor-pointer w-6 h-6 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
         />
         {isEditing ? (
           <input
