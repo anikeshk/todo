@@ -1,8 +1,10 @@
 const Default = () => {
   return (
-    <div>
-      <p>Login or Register to view tasks</p>
-    </div>
+    <section className="flex justify-center	">
+      <div className="text-center	">
+        <p>Login or Register to use Todo</p>
+      </div>
+    </section>
   );
 };
 

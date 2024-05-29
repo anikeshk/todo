@@ -2,7 +2,7 @@ import { Task } from '../types/TaskType';
 import { Auth } from '../types/AuthContextType';
 import { TaskRequest } from '../types/TaskAPIType';
 
-const API_URL = '/api/tasks';
+const API_URL = `${import.meta.env.VITE_API_URL}/tasks`;
 
 export const fetchTasks = async (auth: Auth): Promise<Task[]> => {
   const response = await fetch(API_URL, {

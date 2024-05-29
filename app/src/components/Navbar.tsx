@@ -16,18 +16,20 @@ const Navbar = () => {
       <nav className="bg-transparent p-4">
         <div className="container mx-auto flex justify-between items-center">
           <div>
-            <Link to="/" className="text-black text-2xl font-bold">
+            <Link to="/" className="text-black text-2xl font-bold hover:text-blue-500">
               todo
             </Link>
           </div>
           {isAuthenticated ? (
-            <button onClick={handleLogout}>Logout</button>
+            <button onClick={handleLogout} className="text-black hover:text-blue-500">
+              Logout
+            </button>
           ) : (
             <div>
-              <Link to="/login" className="text-black">
+              <Link to="/login" className="text-black hover:text-blue-500">
                 Login
               </Link>
-              <Link to="/register" className="text-black ml-4">
+              <Link to="/register" className="text-black ml-4 hover:text-blue-500">
                 Register
               </Link>
             </div>
