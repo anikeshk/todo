@@ -11,7 +11,8 @@ This project has been developed to act as a **reference** for the CS 4530 "husks
 3. Basic Authentication (username and password)
 4. User registration and login
 5. Data Storage (MongoDB)
-6. CRUD operations on a entity (Task)
+6. CRUD operations on a entity
+7. Containerization of the application using Docker
 
 The following features are required by the "husksheets" project specification, but are not implemented in this project:
 
