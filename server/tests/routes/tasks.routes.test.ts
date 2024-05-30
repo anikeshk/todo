@@ -43,7 +43,6 @@ describe('Task Routes', () => {
         .set('Content-Type', 'application/json')
         .set('Authorization', 'Basic dGVzdDpUZXN0MTIz')
         .send({ content: '' });
-      console.log(res.body);
       expect(res.status).toBe(400);
       expect(res.body).toHaveProperty('status', 'error');
       expect(res.body).toHaveProperty('code', 600);
