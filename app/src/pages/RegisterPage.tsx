@@ -11,7 +11,7 @@ const RegisterPage = () => {
   const submitForm = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/register`, {
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/users/register`, {
         headers: { 'Content-Type': 'application/json' },
         method: 'POST',
         body: JSON.stringify({ username, password, name, email }),

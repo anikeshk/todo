@@ -9,7 +9,6 @@ export const fetchTasks = async (auth: Auth): Promise<Task[]> => {
     headers: { Authorization: 'Basic ' + btoa(`${auth?.username}:${auth?.password}`) },
   });
   const data = await response.json();
-  console.log('from fetchTaks: ' + data);
   return data.data;
 };
 
