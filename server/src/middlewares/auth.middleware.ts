@@ -1,5 +1,4 @@
 import { NextFunction, Request, Response } from 'express';
-import { Error } from 'mongoose';
 
 import { User } from '../models/users.models';
 
@@ -22,7 +21,7 @@ export const authMiddleware = async (
       res
         .status(401)
         .json({ message: 'Unauthorized: Authorization header is required', status: 401 });
-      return next();
+      return;
     } else {
       const [type, credentials] = authorization.split(' ');
 
@@ -31,11 +30,11 @@ export const authMiddleware = async (
       const user = await User.findOne({ username });
       if (!user) {
         res.status(401).json({ message: 'Unauthorized: Invalid user', status: 401 });
-        return next();
+        return;
       } else {
         if (user.password !== password) {
           res.status(401).json({ message: 'Unauthorized: Invalid password', status: 401 });
-          return next();
+          return;
         } else {
           // a better way of doing is creating a new definition for Request
           // using "Deceleration Merging" in TypeScript
