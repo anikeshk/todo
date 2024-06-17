@@ -2,9 +2,7 @@
 
 ![](screenshot.png)
 
-A simple todo application built using Node.js and TypeScript.
-
-This project has been developed to act as a **reference** for the CS 4530 "husksheets" project. It provided a basic structure for the code, and has the following features which are part of the "husksheets" project specification:
+A simple todo application built using Node.js and TypeScript. It has the following features:
 
 1. Backend server in Node.js using TypeScript; API using REST protocol
 2. Frontend app using React and TypeScript
@@ -12,19 +10,8 @@ This project has been developed to act as a **reference** for the CS 4530 "husks
 4. User registration and login
 5. Data Storage (MongoDB)
 6. CRUD operations on a entity
-7. Containerization of the application using Docker
-
-The following features are required by the "husksheets" project specification, but are not implemented in this project:
-
-1. Error Handling: The code has some basic error handling, but does not cover every corner case.
-2. Comments
-3. Tests: The code currently contains only tests for some of the server functionality, and no tests for the frontend code. The project specification requires extensive tests for both the server and frontend.
-4. HTTPS: The project specification requires the server to be running on HTTPS.
-5. Makefile: The project specification requires a Makefile.
-
-For information about Docker and how to setup a Docker Compose file, go to [DOCKER.md](DOCKER.md).
-
-If you have questions about this project, contact Anikesh G Kamath (email: kamath.ani@northeastern.edu or on Piazza).
+7. Tests using Jest framework
+8. Containerization of the application using Docker.
 
 ---
 
